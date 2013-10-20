@@ -6,6 +6,8 @@
 
 package deber;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sebas
@@ -28,22 +30,74 @@ public class Permutaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
+        jLabel1.setText("Permutaciones");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("/Users/Sebas/Desktop/Permutación_de_1,2,3.png")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("En matemáticas, una permutación es la variación del orden o de la disposición de los elementos de un conjunto.\nPor ejemplo, en el conjunto {1,2,3}, cada ordenación posible de sus elementos, sin repetirlos, es una permutación. Existe un total de 6 permutaciones para estos elementos: \"1,2,3\", \"1,3,2\", \"2,1,3\", \"2,3,1\", \"3,1,2\" y \"3,2,1\".");
+        jTextArea1.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 220, 190));
+
+        jLabel2.setText("Calcular:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        jButton1.setText("Iteración");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
+
+        jButton2.setText("Recursividad");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+ String[] elementos = "a,b,c".split(",");
+        int n = 3;                  //Tipos para escoger
+        int r = elementos.length;   //Elementos elegidos
+        Perm2(elementos, "", n, r);
+
+
+
+    
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private static void Perm2(String[] elem, String act, int n, int r) {
+        if (n == 0) {
+            JOptionPane.showMessageDialog(null,act);
+        } else {
+            for (int i = 0; i < r; i++) {
+                if (!act.contains(elem[i])) { // Controla que no haya repeticiones
+                    Perm2(elem, act + elem[i] + ", ", n - 1, r);
+                }
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -80,5 +134,12 @@ public class Permutaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
